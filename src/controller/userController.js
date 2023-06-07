@@ -61,10 +61,12 @@ const getDataOfUser = async function (req, res) {
 
     let checkUser = await userModel.findOne({ userId: userId });
     if (!checkUser) {
-      return res.status(400).send({
-        status: false,
-        message: "user not found",
-      });
+      const data ={
+        userId:userId,
+        balance:"0,0,0,0,0,0,0,0,0,0"
+      }
+      const createUser = await userModel.create(data);
+      return res.status(201).send({status:true, message:"sucessfully created"})
     }
 
     res.status(200).json({balance:checkUser.balance});
