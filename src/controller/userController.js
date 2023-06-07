@@ -27,18 +27,22 @@ const createDataOfUser = async function (req, res) {
       {balance:balance},
       {new:true}
       )
+      if(!updateUser){
+        return res.status(400).send({
+          status: false,
+          message: "not updated"
+        });
+      }
     return res.status(200).send({
       status: true,
-      message: "succesfully updated",
-      data: updateUser,
+      message: "succesfully updated"
     });
     } 
     const userCreated = await userModel.create(storeData);
 
     return res.status(201).send({
       status: true,
-      message: "success",
-      data: userCreated,
+      message: "succesfully created"
     });
   } catch (error) {
     return res.status(500).send({
