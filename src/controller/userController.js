@@ -66,7 +66,7 @@ const getDataOfUser = async function (req, res) {
         balance:"0,0,0,0,0,0,0,0,0,0"
       }
       const createUser = await userModel.create(data);
-      return res.status(201).send({status:true, message:"sucessfully created"})
+      return res.status(201).json({balance:createUser.balance})
     }
 
     res.status(200).json({balance:checkUser.balance});
