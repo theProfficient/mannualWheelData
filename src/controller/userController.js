@@ -33,12 +33,15 @@ const createDataOfUser = async function (req, res) {
           message: "not updated"
         });
       }
+      console.log(updateUser);
     return res.status(200).send({
       status: true,
       message: "succesfully updated"
     });
     } 
     const userCreated = await userModel.create(storeData);
+
+    console.log(userCreated);
 
     return res.status(201).send({
       status: true,
@@ -66,9 +69,11 @@ const getDataOfUser = async function (req, res) {
         balance:"0,0,0,0,0,0,0,0,0,0"
       }
       const createUser = await userModel.create(data);
+      console.log(createUser);
       return res.status(201).json({balance:createUser.balance})
     }
 
+  console.log(checkUser);
     res.status(200).json({balance:checkUser.balance});
 
   } catch (error) {
