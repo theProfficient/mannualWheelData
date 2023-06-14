@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const route = require("./route/routes");
-
+require("dotenv").config();
 app.use(express.json());
 app.use("/", route);
 
@@ -12,7 +12,7 @@ mongoose.set("strictQuery", false);
 
 mongoose
   .connect(
-    "mongodb+srv://theproficienttech333:gzYGYI5pD4oAUvim@cluster0.gp7jlnb.mongodb.net/mannualWheel",
+    process.env.MONGODB_URI,
     {
       useNewUrlParser: true,
     }
